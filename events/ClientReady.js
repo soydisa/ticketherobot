@@ -2,7 +2,7 @@ const { Events, ActivityType } = require('discord.js');
 const { MongoClient } = require('mongodb')
 const mongoose = require('mongoose');
 require('dotenv').config();
-const MongoDBUrl = process.env.MongooseUrl;
+const MongoDBUrl = process.env.MongooseURL;
 
 module.exports = {
     name: Events.ClientReady,
@@ -30,6 +30,8 @@ module.exports = {
                     type: ActivityType.Playing,
                 });
             }, 3000);
+
+            console.log("Startup completed!");
 
         } catch (err) {
             if (err.code === '11000') {
